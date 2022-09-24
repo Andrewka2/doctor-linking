@@ -4,6 +4,7 @@ import home from '../../assets/home.png'
 import accept from '../../assets/accept.png'
 import logo from '../../assets/logo.png'
 import history from '../../assets/history.png'
+import { Link } from 'react-router-dom'
 
 export default function Panel(){
     return(
@@ -39,7 +40,7 @@ export default function Panel(){
                             <img alt="list" src={history}/>
                         </div>
                         <div className={classes.panelItemText}>
-                            <p>Історія</p>
+                            <Link to="/history">Історія</Link>
                         </div>
                     </div>
                 </div>

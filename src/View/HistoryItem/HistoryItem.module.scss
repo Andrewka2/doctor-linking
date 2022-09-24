@@ -1,0 +1,63 @@
+.body {
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.filterDiv {
+    display: flex;
+    flex-direction: row;
+    padding-left: 30px;
+    padding-top: 15px;
+}
+
+.typeChoice{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    border-bottom: 2px transparent solid;
+    cursor: pointer;
+}
+
+.chosenType {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    background-color: #FDE3E3;
+    border-bottom: 2px #F5A0A0 solid;
+    cursor: pointer;
+}
+
+.categoryHeadingRow {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 2px #F5A0A0 solid;
+    margin-top: 20px;
+}
+
+.categoryRow {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    border-bottom: 2px #FDE3E3 solid;
+}
+
+.consultCategoryValue {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33.3333333%;
+}
+
+.operaCategoryValue {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+}

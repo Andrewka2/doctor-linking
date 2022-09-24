@@ -23,12 +23,10 @@ export default function CalendarItem() {
         setValue(selectedOption)
     };
     function handlerCalendarNumberOfDate(data){
-        
         setCalendarNumberOfDate(data)
     }
 
     function setDate(data){
-        console.log(data)
         let date = new Date(`October ${data}, 2022 03:24:00`)
         return ['Понеділок', 'Вівторок', 'Середа', 'Чертвер', 'Пятниця', 'Субота', 'Неділя'][date.getDay()]
     }

@@ -41,7 +41,7 @@ export default function Panel(){
                             <img alt="list" src={history}/>
                         </div>
                         <div className={classes.panelItemText}>
-                            <p>Історія</p>
+                            <Link to="/history">Історія</Link>
                         </div>
                     </div>
                     <div className={classes.panelItem}>

@@ -1,0 +1,97 @@
+.Notifications{
+    width: 100%;
+    height: 100vh;
+    background-color: #e6e6e6;
+    .itemHeader {
+        padding-top: 32px;
+        padding-left: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-image: url("../../assets/bg.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 150px;
+        background-position-y: -310px;
+        background-position-x: 180px;
+        .itemDate {
+            p {
+                font-size: 24px;
+                line-height: 0px;
+                font-weight: 700;
+            }
+        }
+    }
+    .notItemsContainer {
+        margin-left: 40px;
+        .item{
+            max-width: 350px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 15px 20px ;
+            .asa{
+                p{
+                    font-size: 22px;
+                    font-weight: 700;
+                    padding: 0px;
+                    line-height: 0px;
+                }
+            }
+            .data{
+                p{
+                    font-size: 22px;
+                    font-weight: 700;
+                    padding: 0px;
+                    line-height: 0px;
+                    margin-top: 40px;
+                    text-align: right;
+                }
+            }
+            .diagnosisCont{
+                margin-top: 35px;
+                .diagnosis{
+                    p{
+                        font-size: 22px;
+                        font-weight: 700;
+                        padding: 0px;
+                        line-height: 0px;
+                        margin-top: 40px;
+                    }
+                }
+                .code{
+                    p{
+                        font-size: 22px;
+                        font-weight: 700;
+                        padding: 0px;
+                        line-height: 0px;
+                        margin-top: 40px;
+                    }   
+                }
+            }
+            .additionalInfo{
+                p{
+                    font-size: 22px;
+                    font-weight: 700;
+                    padding: 0px;
+                    line-height: 120%;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    span{
+                        color: #666666;
+                    }
+                }  
+            }
+            .name{
+                p{
+                    font-size: 22px;
+                    font-weight: 700;
+                    padding: 0px;
+                    line-height: 100%;
+                    margin-top: 5px;
+                } 
+            }
+        }
+    }
+
+}

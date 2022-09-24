@@ -2,9 +2,12 @@ import { useState } from "react";
 import React from "react";
 import * as XLSX from 'xlsx';
 import classes from './ChooseFile.module.scss'
+import { useDispatch } from 'react-redux'
+import { addCalendarData } from "../../root/actions/calendarActions";
 
 export default function ChooseFile({ calendarDataHandler, handlerCalendarNumberOfDate }) {
     let [file, setFile] = useState()
+    const dispatch = useDispatch()
 
     async function sendFileHandler(e) {
         const file = e.target.files[0]
@@ -14,7 +17,6 @@ export default function ChooseFile({ calendarDataHandler, handlerCalendarNumberO
         const worksheet = workBook.Sheets[workBook.SheetNames[0]]
 
         const jsonData = XLSX.utils.sheet_to_json(worksheet, {header: 1})
-        calendarDataHandler(jsonData.slice(1))
 
         var range = XLSX.utils.decode_range(worksheet['!ref']);
         let resultRange = []
@@ -24,7 +26,8 @@ export default function ChooseFile({ calendarDataHandler, handlerCalendarNumberO
                 resultRange.push(secondCell)
             }
         }
-        handlerCalendarNumberOfDate(resultRange)
+
+        dispatch(addCalendarData(resultRange, jsonData.slice(1)))
     }
 
     return (

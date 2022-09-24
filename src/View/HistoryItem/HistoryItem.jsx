@@ -16,7 +16,7 @@ export default function HistoryItem() {
     const operationsData = useSelector((state) => state.history.operationsList)
     const dispatch = useDispatch()
     let [consultationChoosed, switchConsultation] = useState(true)
-    let [organisationChoosed, switchOrganisation] = useState(true)
+    let [organisationChoosed, switchOrganisation] = useState(false)
     let [choosedCategoryId, switchCategoryId] = useState(0)
     let [consultationList, setConsultationList] = useState([])
     let [operationsList, setOperationsList] = useState([])

@@ -1,8 +1,9 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import classes from './CalendarItem.module.scss'
 import Select from 'react-select'
 import arrow from '../../assets/arrow.png'
 import ChooseFile from "../../Components/ChooseFileComponent/ChooseFile";
+import { useSelector } from 'react-redux'
 
 const options = [
     { value: 'Day', label: 'Day' },
@@ -11,9 +12,21 @@ const options = [
 ];
 
 export default function CalendarItem() {
+    const calendarRange = useSelector((state) => state.calendar.calendarRange)
+    const rawItems = useSelector((state) => state.calendar.rawItems)
     let [value, setValue] = useState(null)
     let [calendarData, setCalendarData] = useState(null)
     let [calendarNumberOfDate, setCalendarNumberOfDate] = useState(null)
+
+    useEffect(() => {
+        console.log(calendarRange);
+        setCalendarNumberOfDate(calendarRange)
+    }, [calendarRange])
+    
+    useEffect(() => {
+        console.log(rawItems);
+        setCalendarData(rawItems)
+    }, [rawItems])
 
     function calendarDataHandler(data){
         setCalendarData(data)

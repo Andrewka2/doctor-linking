@@ -26,7 +26,7 @@ export default function Notifications(){
                         <p>Додаткова інформація: <span>some additional text that we should tell them all!</span></p>
                     </div>
                     <div className={classes.name}>
-                        <p>Ім'я Andrew Katsalap</p>
+                        <p>Ім'я <span>Andrew Katsalap</span></p>
                     </div>
                     <div className={classes.data}>
                         <p>{`${new Date().toLocaleTimeString()}`}</p>

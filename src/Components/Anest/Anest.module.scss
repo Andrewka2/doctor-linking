@@ -5,6 +5,7 @@
     .patientCont{
         .content{
             display: flex;
+            flex-wrap: wrap;
             margin-top: 20px;
         }
         .itemStartData{
@@ -46,15 +47,16 @@
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
-            width: 530px;
+            flex-wrap: wrap;
+            max-width: 530px;
+            width: 100%;
         }
         .medicineItem{
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-top: 20px;
-            .medicineName{
-                
+            .medicineName{   
                 p{
                     font-size: 20px;
                     padding: 0px;
@@ -95,15 +97,14 @@
 }
 
 .tubesCont{
-    width: 510px;
+    max-width: 510px;
+    width: 100%;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
+    flex-wrap: wrap;
     .tubes{
         width: 310px;
-    }
-    .btnCont{
-        
     }
 }   
 
@@ -131,7 +132,6 @@
             padding: 0px;
             margin: 0px;
             font-weight: 600;
-            
         }
     }
 }

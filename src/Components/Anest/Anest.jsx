@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classes from './Anest.module.scss';
 import Select from 'react-select';
 import { useForm } from 'react-hook-form';
+import Nurse from "../Nurse/Nurse";
 
 const doctors = [
     { value: 'Анестезіолог', label: 'Анестезіолог' },
@@ -27,11 +28,12 @@ export default function Anest() {
             <div className={classes.doctorSelectCont} >
                 <Select
                     value={doctor}
-                    onChange={handleDoctor}
+                    onChange={(item) => handleDoctor(item.value)}
                     options={doctors}
                     placeholder="Оберіть лікаря"
                 />
             </div>
+            {doctor === 'Медсестра' ? <Nurse/> : 
             <div className={classes.patientCont}>
                 <form onSubmit={handleSubmit(data => console.log(data))}>
                     <div className={classes.content}>
@@ -208,7 +210,7 @@ export default function Anest() {
                         </div>
                     </div>
                 </form>
-            </div>
+            </div>}
         </div>
     )
 }

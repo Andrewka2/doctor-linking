@@ -1,0 +1,194 @@
+.Anest{
+    .doctorSelectCont{
+        width: 200px;
+    }
+    .patientCont{
+        .content{
+            display: flex;
+            margin-top: 20px;
+        }
+            }
+        }
+        .medicineList{
+            max-width: 550px;
+            width: 100%;
+            margin-top: 30px; 
+        }
+        .medicineListCont{
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 530px;
+        }
+        .medicineItem{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+            .medicineName{
+                
+                p{
+                    font-size: 20px;
+                    padding: 0px;
+                    margin: 0px;
+                    font-weight: 600;
+                    padding-top: 10px;
+                }
+            }
+            .medicineInput{
+                margin-bottom: -10px;
+                input {
+                    width: 80px;
+                    background-color: transparent;
+                    border: none;
+                    border-bottom: 1px solid #000;
+                    padding-bottom: 3px;
+                    font-size: 20px;
+                    padding: 0px;
+                    margin: 0px;
+                    font-weight: 600;
+                    padding-left: 20px;
+                    outline: none;
+                }
+            }
+            .ml{
+                padding: 5px 10px;
+                background-color: #666666;
+                margin-bottom: -7px;
+                p{
+                    color: #fff;
+                    padding: 0px;
+                    margin: 0px;
+                    line-height: 100%;
+                }
+            }
+        }
+
+        
+.smallText{
+    margin-right: 15px !important;
+}
+.itemStartDataInput{     
+    input{
+        padding-left: 10px;
+        width: 50px;
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid #000;
+        outline: none;
+        font-size: 20px;
+        margin-bottom: -15px;
+    }
+}
+    
+.itemStartDataText{
+    margin-right: 7px;
+    p{
+        font-size: 20px;
+        padding: 0px;
+        margin: 0px;
+        font-weight: 600;
+    }
+}
+
+.itemStartData{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.tubesCont{
+    width: 510px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    .tubes{
+        width: 310px;
+    }
+    .btnCont{
+        
+    }
+}   
+
+.medicineCheckBoxCont{
+    margin-top: 20px;
+    .medicineCheckItem{
+        display: flex;
+        align-items: center;
+        margin-bottom: 19px;
+    }
+    .medicineInput{
+        margin-bottom: -15px;
+        margin-right: 10px;
+        input[type="checkbox"]{
+            padding: 0px;
+            margin: 0px;
+            width: 16px;
+            height: 16px;
+        }
+    }
+    .medicineName{  
+        margin-top: 10px;    
+        p{
+            font-size: 20px;
+            padding: 0px;
+            margin: 0px;
+            font-weight: 600;
+            
+        }
+    }
+}
+.send{
+    input{
+        padding: 10px 25px;
+        font-size: 18px;
+        border: none;
+        background-color: #F5A0A0;
+        color: #fff;
+        cursor: pointer;
+    }
+}
+
+.dangerLevelDiv {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.dangerLevel0 {
+    margin-right: 10px;
+    height: 50px;
+    width: 100px;
+    background-color: white;
+    border: 3px green solid;
+}
+
+.dangerLevel1 {
+    margin-right: 10px;
+    height: 50px;
+    width: 100px;
+    background-color: white;
+    border: 3px yellow solid;
+}
+
+.dangerLevel2 {
+    height: 50px;
+    width: 100px;
+    background-color: white;
+    border: 3px red solid;
+}
+
+.choosedDangerLevel0 {
+    background-color: green;
+    border: none;
+}
+
+.choosedDangerLevel1 {
+    background-color: yellow;
+    border: none;
+}
+
+.choosedDangerLevel2 {
+    background-color: red;
+    border: none;
+}

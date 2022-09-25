@@ -46,7 +46,8 @@ const contentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 consultationList: {
-                    historyList: [action.payload, ...state.consultationList.historyList]                 }
+                    historyList: [action.payload, ...state.consultationList.historyList]
+                }
             }
         }
         case ADD_CONSULTATION_LIST:{

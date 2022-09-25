@@ -1,6 +1,10 @@
 // history
 export const ADD_CONSULTATION_LIST = 'ADD_CONSULTATION_LIST'
 export const ADD_OPERATIONS_LIST = 'ADD_OPERATIONS_LIST'
+export const ADD_NEW_RECEPTION = 'ADD_NEW_RECEPTION'
 
 //calendar
 export const ADD_DEFAULT_CALENDAR = 'ADD_DEFAULT_CALENDAR'
+
+//reception
+export const ADD_RECEPTION = 'ADD_RECEPTION'

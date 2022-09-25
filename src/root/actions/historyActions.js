@@ -1,8 +1,16 @@
-import { ADD_CONSULTATION_LIST, ADD_OPERATIONS_LIST } from '../constants';
+import { ADD_CONSULTATION_LIST, ADD_OPERATIONS_LIST, ADD_NEW_RECEPTION } from '../constants';
 
 function setConsultationData(data) {
-    console.log('bla bla');
-    console.log(data);
+    let res = saveData(data)
+    console.log('res');
+    console.log(res);
+    return {
+        type: ADD_NEW_RECEPTION,
+        payload: res
+    }
+}
+
+function addConsultationItem(data) {
     return {
         type: ADD_CONSULTATION_LIST,
         payload: data
@@ -10,11 +18,26 @@ function setConsultationData(data) {
 }
 
 function setOperationData(data) {
-    console.log('bla bla 2');
-    console.log(data);
     return {
         type: ADD_OPERATIONS_LIST,
         payload: data
+    }
+}
+
+function saveData(data){
+    console.log(1);
+    console.log(data.data.diagnosis);
+    return {
+        docName: data.doctor.value,
+        docType: data.doctor.label,
+        diagnosis: data.data.diagnosis,
+        dateTime: Date.now()
+    }
+}
+
+export function addNewHistoryItem(data){
+    return function (dispatch) {
+        dispatch(addConsultationItem(data))
     }
 }
 

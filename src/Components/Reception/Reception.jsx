@@ -4,6 +4,8 @@ import Select from 'react-select';
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from 'react-redux'
+import { addReceptionData } from "../../root/actions/receptionActions";
 
 const options = [
     { value: '1', label: '1' },
@@ -20,13 +22,16 @@ const doctors = [
 ];
 
 export default function Reception(){
+    const dispatch = useDispatch()
 
     let [value, setValue] = useState(null)
     
     const notify = (data) => toast(`Шкала ASA: ${value.value}. Діагноз: ${data.diagnosis}`);
     
     function sendData(data){
+        console.log(data);
         notify(data)
+        dispatch(addReceptionData({data, value, doctor}))
     }
 
     let [doctor, setDoctor] = useState(null)

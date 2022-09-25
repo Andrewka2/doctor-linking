@@ -16,17 +16,17 @@ export default function Notifications(){
                     </div>      
                     <div className={classes.diagnosisCont}>
                         <div className={classes.diagnosis}>
-                            <p>Діагноз: some diagnosis</p>
+                            <p>Діагноз: конвульсії</p>
                         </div>
                         <div className={classes.code}>
-                            <p>Код МКХ: #sdfsdfsdf</p>
+                            <p>Код МКХ: 1213124</p>
                         </div>
                     </div>
                     <div className={classes.additionalInfo}>
-                        <p>Додаткова інформація: <span>some additional text that we should tell them all!</span></p>
+                        <p>Додаткова інформація: <span>одноразова блювота фонтаном!</span></p>
                     </div>
                     <div className={classes.name}>
-                        <p>Ім'я <span>Andrew Katsalap</span></p>
+                        <p>Ім'я: <span>Іван Іванов</span></p>
                     </div>
                     <div className={classes.data}>
                         <p>{`${new Date().toLocaleTimeString()}`}</p>

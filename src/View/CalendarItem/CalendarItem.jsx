@@ -16,15 +16,14 @@ export default function CalendarItem() {
     const rawItems = useSelector((state) => state.calendar.rawItems)
     let [value, setValue] = useState(null)
     let [calendarData, setCalendarData] = useState(null)
-    let [calendarNumberOfDate, setCalendarNumberOfDate] = useState(null)
+    let [calendarNumberOfDate, setCalendarNumberOfDate] = useState([])
 
     useEffect(() => {
-        console.log(calendarRange);
+        console.log(calendarRange)
         setCalendarNumberOfDate(calendarRange)
     }, [calendarRange])
     
     useEffect(() => {
-        console.log(rawItems);
         setCalendarData(rawItems)
     }, [rawItems])
 
@@ -73,9 +72,9 @@ export default function CalendarItem() {
             </div>
             <div className={classes.content}>
                 <div className={classes.monthDates}>
-                    <div className={classes.empty}>
-
-                    </div>
+                    {
+                        calendarNumberOfDate.length !== 0 ? <div className={classes.empty}> </div> : null  
+                    }
                     {
                         calendarNumberOfDate ? calendarNumberOfDate.map((elem, i)=>{
                             return <div className={classes.date}>

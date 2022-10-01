@@ -67,10 +67,11 @@ export default function HistoryItem() {
             </div>
             <div className={classes.categoryDiv}>
             {consultationList.length > 0 && choosedCategoryId === 0 ? consultationList.map((elem, i)=> {
+                    let date = new Date(elem.dateTime)
                     return (
                         <div className={classes.categoryRow}>
                             <div className={classes.consultCategoryValue}>
-                                <p className={classes.consultValue}>{elem.dateTime}</p>
+                                <p className={classes.consultValue}>{`${date.toLocaleDateString()}/${date.toLocaleTimeString()}`}</p>
                             </div>
                             <div className={classes.consultCategoryValue}>
                                 <p className={classes.consultValue}>{elem.docName}</p>
@@ -83,10 +84,11 @@ export default function HistoryItem() {
                             </div>
                         </div>
             )}) : operationsList.length > 0 &&  choosedCategoryId === 1 ? operationsList.map((elem, i) => {
+                let date = new Date(elem.dateTime)
                 return (
                     <div className={classes.categoryRow}>
                         <div className={classes.operaCategoryValue}>
-                            <p className={classes.operaValue}>{elem.dateTime}</p>
+                            <p className={classes.operaValue}>{`${date.toLocaleDateString()}/${date.toLocaleTimeString()}`}</p>
                         </div>
                         <div className={classes.operaCategoryValue}>
                             <p className={classes.operaValue}>{elem.anesthetist}</p>

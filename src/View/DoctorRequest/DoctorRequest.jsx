@@ -17,7 +17,7 @@ export default function DoctorRequest() {
                     <h2>Формування запиту</h2>
                 </div>
                 {
-                    userType === 'anest' ? <Anest/> : <Reception/>
+                    userType === 'anest' ? <Reception/>: <Anest/>
                 }
             </div>
         </div>

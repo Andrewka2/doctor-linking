@@ -3,10 +3,12 @@ import classes from './Anest.module.scss';
 import Select from 'react-select';
 import { useForm } from 'react-hook-form';
 import Nurse from "../Nurse/Nurse";
+import SurgAnest from "../Surgeon/SurgAnest/SurgAnestReq";
 
 const doctors = [
     { value: 'Анестезіолог', label: 'Анестезіолог' },
     { value: 'Медсестра', label: 'Медсестра' },
+    { value: 'Хір-Анестезіолог', label: 'Хір-Анестезіолог' },
 ];
 
 export default function Anest() {
@@ -34,6 +36,7 @@ export default function Anest() {
                 />
             </div>
             {doctor === 'Медсестра' ? <Nurse/> : 
+             doctor === 'Хір-Анестезіолог' ? <SurgAnest/> :
             <div className={classes.patientCont}>
                 <form onSubmit={handleSubmit(data => console.log(data))}>
                     <div className={classes.content}>

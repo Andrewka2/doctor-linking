@@ -6,5 +6,8 @@ export const ADD_NEW_RECEPTION = 'ADD_NEW_RECEPTION'
 //calendar
 export const ADD_DEFAULT_CALENDAR = 'ADD_DEFAULT_CALENDAR'
 
+//schedule
+export const CHANGE_STATUS = 'CHANGE_STATUS'
+
 //reception
 export const ADD_RECEPTION = 'ADD_RECEPTION'

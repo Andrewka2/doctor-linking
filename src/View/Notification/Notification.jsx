@@ -1,19 +1,16 @@
 import React from "react";
 import classes from './Notification.module.scss'
+import { PageHeader } from "../../Components/PageHeader/PageHeader";
 
-export default function Notifications(){
+export default function Notifications() {
     return (
         <div className={classes.Notifications}>
-            <div className={classes.itemHeader}>
-                <div className={classes.itemDate}>
-                    <p>Виклики</p>
-                </div>
-            </div>
+            <PageHeader title={"Виклик"}/>
             <div className={classes.notItemsContainer}>
                 <div className={classes.item}>
                     <div className={classes.asa}>
                         <p>Шкала ASA: 3</p>
-                    </div>      
+                    </div>
                     <div className={classes.diagnosisCont}>
                         <div className={classes.diagnosis}>
                             <p>Діагноз: конвульсії</p>
@@ -31,7 +28,7 @@ export default function Notifications(){
                     <div className={classes.data}>
                         <p>{`${new Date().toLocaleTimeString()}`}</p>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

@@ -10,6 +10,7 @@
     flex-wrap: wrap;
     .fieldItem {
         margin-right: 70px;
+        margin-top: 30px;
         input {
             max-width: 350px;
             width: 100%;
@@ -38,7 +39,7 @@
 }
 
 .btnCont {
-    margin-top: 15px;
+    margin-top: 25px;
     .send{
         input{
             padding: 10px 25px;

@@ -41,8 +41,6 @@ export default function Schedule() {
 
     let weekStart = getWeekStart(curDate).getDate()
     Array.from({length: 8}, (_, i) => {
-        console.log('day');
-        console.log(i + weekStart - 1);
         return i + weekStart - 1})
     
     let [calendarNumberOfDate, setCalendarNumberOfDate] = useState([])

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react"
 import classes from './CalendarItem.module.scss'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Schedule from "../../Components/Schedule/Schedule";
-
 
 export default function CalendarItem() {
     const calendarRange = useSelector((state) => state.calendar.calendarRange)
@@ -18,6 +17,8 @@ export default function CalendarItem() {
     useEffect(() => {
         setCalendarData(rawItems)
     }, [rawItems])
+
+    
 
     function setDate(data){
         let date = new Date(`October ${data}, 2022 03:24:00`)

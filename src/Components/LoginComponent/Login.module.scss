@@ -1,0 +1,45 @@
+.loginForm{
+    max-width: 350px;
+    width: 100%;
+    margin: auto;
+    .inputCont{
+        margin-bottom: 30px;
+        .errorMessage{
+            margin: 0px;
+            padding: 0px;
+            margin-top: 10px;
+            color: red;
+            font-size: 14px;
+        }
+    }
+    .btnSubmit{
+        text-align: center;
+        margin-top: 30px;
+        input {
+            background-color: transparent;
+            border: none;
+            background-color: rgb(118, 228, 255);
+            color: #fff;
+            border-radius: 20px;
+            padding: 15px 60px;
+            font-size: 19px;
+            outline: none;
+            cursor: pointer;  
+            transition: all ease-in 0.2s;
+        }
+        input:hover {
+            text-shadow: 1px 1px 1px #fff;
+            box-shadow: 3px 3px 3px #fff;
+        }
+        input:active {
+            opacity: 0.6;
+        }
+    }
+}
+.errorMessage{
+    margin: 0px;
+    padding: 0px;
+    margin-top: 10px;
+    color: red;
+    font-size: 14px;
+}

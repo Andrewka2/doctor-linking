@@ -4,6 +4,10 @@ const initialState = {
     id: 0,
     email: '',
     name: '',
+    surname: '',
+    position: '',
+    phone: '',
+    isTemporary: true,
     isLoggedIn: false
 }
 
@@ -15,8 +19,12 @@ export default function userReducer(state = initialState, action){
                 id: action.payload.id,
                 email: action.payload.email,
                 name: action.payload.name,
-                isLoggedIn: true
-
+                surname: action.payload.surname,
+                position: action.payload.position,
+                phone: action.payload.phone,
+                isTemporary: action.payload.isTemporary,
+                role: action.payload.role,
+                isLoggedIn: true,
             }
         }
         case LOGIN: {   
@@ -25,13 +33,18 @@ export default function userReducer(state = initialState, action){
                 id: action.payload.id,
                 email: action.payload.email,
                 name: action.payload.name,
-                isLoggedIn: true
+                surname: action.payload.surname,
+                position: action.payload.position,
+                phone: action.payload.phone,
+                isTemporary: action.payload.isTemporary,
+                role: action.payload.role,
+                isLoggedIn: true,
             }
         }
         case LOG_OUT: {
             return {
                 ...state,
-                id: 0,
+                id: null,
                 email: '',
                 name: '',
                 isLoggedIn: false

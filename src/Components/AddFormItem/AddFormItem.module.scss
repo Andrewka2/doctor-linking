@@ -1,0 +1,19 @@
+.AddFormItem{
+    max-width: 200px;
+    width: 100%;
+    height: 250px;
+    background-color: #fff;
+    border-radius: 10px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 30px;
+    .text{
+        font-weight: 700;
+        font-size: 20px;
+    }
+    img{
+        cursor: pointer;
+    }
+}

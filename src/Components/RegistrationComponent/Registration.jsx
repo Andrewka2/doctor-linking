@@ -2,14 +2,23 @@ import React, {useState} from 'react'
 import {useForm} from 'react-hook-form'
 import classes from './Registration.module.scss'
 import { Input } from '../../UI/Input/Input'
-import { useDispatch } from 'react-redux'
 import { thunkRegistration, verify } from '../../root/actions/userActions'
 import ReCAPTCHA from 'react-google-recaptcha'
+import { useDispatch } from 'react-redux'
 
 function Registration() {
     const dispatch = useDispatch()
     const [captcha, setCaptcha] = useState(null)
+    
     const [captchaError, setCaptchaError] = useState(false)
+    function registrationHandler(data){
+        if(captcha){
+            dispatch(thunkRegistration(data))
+            setCaptchaError(false)
+        }else{
+            setCaptchaError(true)
+        }
+    }
     
     async function onCaptchaChange(value) {
         let result = await verify(value)
@@ -19,15 +28,6 @@ function Registration() {
         }
         setCaptcha(value)
         setCaptchaError(false)
-    }
-
-    function registrationHandler(data){
-        if(captcha){
-            dispatch(thunkRegistration(data))
-            setCaptchaError(false)
-        }else{
-            setCaptchaError(true)
-        }
     }
 
     const {
@@ -42,6 +42,24 @@ function Registration() {
                 <Input register={register} label={'name'} itemType={'name'} type={'registration'} placeholder={'Name'} />
                 {
                     errors.name?.type === 'required' && <p className={classes.errorMessage}>Name is required</p>
+                }
+            </div>
+            <div className={classes.inputCont}>
+                <Input register={register} label={'surname'} itemType={'name'} type={'registration'} placeholder={'Surname'} />
+                {
+                    errors.surname?.type === 'required' && <p className={classes.errorMessage}>Name is required</p>
+                }
+            </div>
+            <div className={classes.inputCont}>
+                <Input register={register} label={'position'} itemType={'name'} type={'registration'} placeholder={'Position'} />
+                {
+                    errors.position?.type === 'required' && <p className={classes.errorMessage}>Name is required</p>
+                }
+            </div>
+            <div className={classes.inputCont}>
+                <Input register={register} label={'phone'} itemType={'name'} type={'registration'} placeholder={'Phone'} />
+                {
+                    errors.phone?.type === 'required' && <p className={classes.errorMessage}>Name is required</p>
                 }
             </div>
             <div className={classes.inputCont}>

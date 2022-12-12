@@ -16,3 +16,13 @@ export const ADD_RECEPTION = 'ADD_RECEPTION'
 export const LOGIN = 'LOGIN'
 export const SIGN_UP = 'SIGN_UP'
 export const LOG_OUT =  'LOG_OUT'
+export const CHANGE_PASSWORD = 'CHANGE_PASSWORD'
+
+// doctors
+
+export const DOCTOR_SIGN_UP = "DOCTOR_SIGN_UP" 
+
+// USERS
+
+export const GET_ALL = "GET_ALL"
+

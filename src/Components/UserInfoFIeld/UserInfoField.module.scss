@@ -1,0 +1,31 @@
+.userData{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    .sectionName{
+        padding: 10px 15px;
+        background-color: rgb(231, 224, 224);
+        border-radius: 5px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        margin-right: 5px;
+        p{
+            margin: 0px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+    .sectionData{
+        margin-left: 5px;
+        border: 1px solid #000;
+        padding: 9px 15px;
+        border-radius: 5px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        p{
+            margin: 0px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+}

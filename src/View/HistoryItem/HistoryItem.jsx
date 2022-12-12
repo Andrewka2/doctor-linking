@@ -91,10 +91,10 @@ export default function HistoryItem() {
                             <p className={classes.operaValue}>{`${date.toLocaleDateString()}/${date.toLocaleTimeString()}`}</p>
                         </div>
                         <div className={classes.operaCategoryValue}>
-                            <p className={classes.operaValue}>{elem.anesthetist}</p>
+                            <p className={classes.operaValue}>{elem.petitioner}</p>
                         </div>
                         <div className={classes.operaCategoryValue}>
-                            <p className={classes.operaValue}>{elem.surgeon}</p>
+                            <p className={classes.operaValue}>{elem.personalType}</p>
                         </div>
                         <div className={classes.operaCategoryValue}>
                             <p className={classes.operaValue}>{elem.surgeryType}</p>

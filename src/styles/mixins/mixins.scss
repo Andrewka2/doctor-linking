@@ -1,0 +1,15 @@
+@mixin registrationContainer {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+@mixin registrationTitle {
+    font-size: 44px;
+    margin: 0px;
+    margin-bottom: 15px;
+    font-weight: 800;
+}

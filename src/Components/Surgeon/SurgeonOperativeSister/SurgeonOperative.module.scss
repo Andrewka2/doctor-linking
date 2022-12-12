@@ -1,0 +1,54 @@
+.doctorSelectCont {
+    width: 200px;
+}
+
+.fieldCont {
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    .fieldItem {
+        margin-right: 70px;
+        margin-top: 30px;
+        input {
+            max-width: 350px;
+            width: 100%;
+            outline: none;
+            border: none;
+            border-radius: 15px;
+            padding: 15px;
+            font-size: 20px;
+        }
+    }
+}
+
+.fieldItemDescribe {
+    max-width: 620px;
+    width: 100%;
+    margin-top: 40px;
+    textarea {
+        resize: none;
+        width: 100%;
+        outline: none;
+        border: none;
+        border-radius: 15px;
+        padding: 15px;
+        font-size: 20px;
+    }
+}
+
+.btnCont {
+    margin-top: 25px;
+    .send{
+        input{
+            padding: 10px 25px;
+            font-size: 18px;
+            border: none;
+            background-color: #F5A0A0;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    }
+}

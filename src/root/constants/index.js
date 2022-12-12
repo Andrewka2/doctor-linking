@@ -12,3 +12,8 @@ export const CHANGE_DATE = 'CHANGE_DATE'
 
 //reception
 export const ADD_RECEPTION = 'ADD_RECEPTION'
+
+//user
+export const LOGIN = 'LOGIN'
+export const SIGN_UP = 'SIGN_UP'
+export const LOG_OUT =  'LOG_OUT'

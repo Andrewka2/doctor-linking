@@ -1,4 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import allUsersReducer from './reducers/allUsersReducer';
 import calendarReducer from './reducers/calendarReducer';
 import historyReducer from './reducers/historyReducer';
 import receptionReducer from './reducers/receptionReducer';
@@ -10,7 +11,8 @@ const rootReducer = combineReducers({
     calendar: calendarReducer,
     reception: receptionReducer,
     schedule: scheduleReducer,
-    user: userReducer
+    user: userReducer,
+    users: allUsersReducer
 })
 
 const store = configureStore({ reducer: rootReducer })

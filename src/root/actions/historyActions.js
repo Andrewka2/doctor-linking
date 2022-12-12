@@ -1,9 +1,8 @@
 import { ADD_CONSULTATION_LIST, ADD_OPERATIONS_LIST, ADD_NEW_RECEPTION } from '../constants';
+import $api, { API_URL } from '../../http/index';
 
 function setConsultationData(data) {
     let res = saveData(data)
-    console.log('res');
-    console.log(res);
     return {
         type: ADD_NEW_RECEPTION,
         payload: res
@@ -24,9 +23,25 @@ function setOperationData(data) {
     }
 }
 
+async function fetchOperationData(data){
+    await $api.post('/notifcation', data)
+}
+
+export function thunkOperationData(data){
+    return async (dispatch) => {
+        let result = await fetchOperationData(data)
+        const reducerData = {
+            id: data.petitionerId,
+            petitioner: data.petitioner,
+            personalType: data.personalType,
+            surgeryType: data.requestData.surgeryType,
+            dateTime: data.dateTime
+        } 
+        dispatch(setOperationData(reducerData))
+    }
+}
+
 function saveData(data){
-    console.log(1);
-    console.log(data.data.diagnosis);
     return {
         docName: data.doctor.value,
         docType: data.doctor.label,

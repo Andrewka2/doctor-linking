@@ -12,5 +12,11 @@ $api.interceptors.request.use((config)=>{
     return config
 })
 
+export async function setNotificationKey(data){
+    await $api.post('/notification', {key: data})
+}
+
+
 export default $api;
 
+//password update

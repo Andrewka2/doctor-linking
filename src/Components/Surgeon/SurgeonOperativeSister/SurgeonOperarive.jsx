@@ -1,38 +1,25 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import classes from './SurgeonOperative.module.scss'
 import { useForm } from 'react-hook-form';
-import Select from 'react-select';
 
-const doctors = [
-    { value: 'Анестезіолог', label: 'Анестезіолог' },
-    { value: 'Медсестра', label: 'Медсестра' },
-];
-
-export default function SurgeonOperative() {
-    let [doctor, setDoctor] = useState(null)
-    function handleDoctor(selectedOption) {
-        setDoctor(selectedOption)
-    };
+export default function SurgeonOperative({surgeonOperativeDataHandler}) {
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
 
+    function handleSubmitData(data, e){
+        e.preventDefault();
+        surgeonOperativeDataHandler(data)
+    }
+
     return (
         <div>
-            <div className={classes.doctorSelectCont} >
-                <Select
-                    value={doctor}
-                    onChange={handleDoctor}
-                    options={doctors}
-                    placeholder="Оберіть лікаря"
-                />
-            </div>
-            <form onSubmit={handleSubmit(data => console.log(data))}>
+            <form onSubmit={handleSubmit((data,e) => handleSubmitData(data,e))}>
                 <div className={classes.fieldCont}>
                     <div className={classes.fieldItem}>
-                        <input placeholder="Оперативне втручання" type="text" {...register('diagnosis')} />
+                        <input placeholder="Оперативне втручання" type="text" {...register('surgeryType')} />
                     </div>
                     <div className={classes.fieldItem}>
                         <input placeholder="Час" type="text" {...register('time')} />

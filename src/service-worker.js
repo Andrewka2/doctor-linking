@@ -69,4 +69,6 @@ self.addEventListener('message', (event) => {
   }
 });
 
-// Any other custom service worker logic can go here.
+// ask permission for notifications.
+
+// Scripts for firebase and firebase messaging

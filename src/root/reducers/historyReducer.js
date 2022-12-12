@@ -24,16 +24,16 @@ const initialState = {
         historyList: [
             {
                 id: 1,
-                surgeon: 'Оленка',
-                anesthetist: 'Марусій',
+                petitioner: 'Оленка',
+                personalType: 'Марусій',
                 surgeryType: 'Ургентна планова',
                 dateTime: Date.now()
             },
             {
-                id: 2,
-                surgeon: 'Оленка',
-                anesthetist: 'Марусій',
-                surgeryType: 'Аденотомія',
+                id: 1,
+                petitioner: 'Оленка',
+                personalType: 'Марусій',
+                surgeryType: 'Ургентна планова',
                 dateTime: Date.now()
             }
         ]
@@ -62,7 +62,7 @@ const contentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 operationsList: {
-                    historyList: action.payload
+                    historyList: [action.payload, ...state.operationsList.historyList]
                 }
             }
         }

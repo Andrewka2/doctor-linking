@@ -1,0 +1,31 @@
+.usersContainer{
+    max-width: 45%;
+    width: 100%;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 5px;
+    .container{
+        margin-top: 35px;
+        margin-left: 40px;
+        margin-right: 40px;
+        .header{
+            display: flex;
+            align-items: center;
+            .headerBtn{
+                padding: 13px 18px;
+                background-color: rgb(231, 224, 224);
+                border-radius: 5px;
+                margin-right: 15px;
+                cursor: pointer;
+                p{
+                    margin: 0px;
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+            }
+        }
+        .usersList{
+            margin-top: 40px;
+        }
+    }
+}

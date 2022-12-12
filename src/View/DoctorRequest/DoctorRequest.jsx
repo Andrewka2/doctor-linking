@@ -3,9 +3,12 @@ import classes from './DoctorRequest.module.scss';
 import Reception from "../../Components/Reception/Reception";
 import Anest from "../../Components/Anest/Anest";
 import SurgeonOperative from "../../Components/Surgeon/SurgeonOperativeSister/SurgeonOperarive";
+import { useSelector } from "react-redux";
+import Surgeon from "../../Components/Surgeon/Sergeon/Surgeon";
 
 export default function DoctorRequest() {
-    let userType = 'anest1'
+    let user = useSelector(state => state.user)
+
     return (
         <div className={classes.doctorRequest}>
             <div className={classes.itemHeader}>
@@ -18,7 +21,7 @@ export default function DoctorRequest() {
                     <h2>Формування запиту</h2>
                 </div>
                 {
-                    userType === 'anest' ? <Reception/> : <SurgeonOperative/>
+                    user.position === 'test' ? <SurgeonOperative /> : <Surgeon user={user}/>
                 }
             </div>
         </div>

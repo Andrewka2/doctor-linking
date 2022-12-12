@@ -5,6 +5,7 @@ import accept from '../../assets/accept.png'
 import logo from '../../assets/logo.png'
 import history from '../../assets/history.png'
 import user from '../../assets/user.png'
+import userManagement from '../../assets/user-settings.png'
 import { Link } from 'react-router-dom'
 import notification from '../../assets/notification.png'
 
@@ -27,6 +28,14 @@ export default function Panel() {
                         </div>
                         <div className={classes.panelItemText}>
                             <Link to="user">Профіль</Link>
+                        </div>
+                    </div>
+                    <div className={classes.panelItem}>
+                        <div className={classes.panelItemImage}>
+                            <img alt="user" src={userManagement} />
+                        </div>
+                        <div className={classes.panelItemText}>
+                            <Link to="user-management">Управління акаунтами</Link>
                         </div>
                     </div>
                     <div className={classes.panelItem}>

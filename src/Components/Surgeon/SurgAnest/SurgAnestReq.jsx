@@ -11,7 +11,7 @@ export default function SurgAnest() {
         setDoctor(selectedOption)
     };
 
-    function changeDangerLevel(value){
+    function changeDangerLevel(value) {
         setDanger(value)
     }
 
@@ -46,16 +46,14 @@ export default function SurgAnest() {
                             <div className={[classes.itemStartDataText, classes.smallText].join(' ')}>
                                 <p>Наявність аналізів:</p>
                             </div>
-                            <div className={classes.itemStartDataInput}>
+                            <div className={classes.itemStartDataCheckBox}>
                                 <input className={classes.selectBox} placeholder="" type="checkbox" {...register('wage')} />
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <div className={classes.btnCont}>
-                            <div className={classes.send}>
-                                <input type="submit" />
-                            </div>
+                    <div className={classes.btnCont}>
+                        <div className={classes.send}>
+                            <input type="submit" />
                         </div>
                     </div>
                 </form>

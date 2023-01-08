@@ -7,8 +7,6 @@ const initialState = {
 const receptionReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_RECEPTION:{
-            console.log('action.payload');
-            console.log(action.payload);
             return {
                 ...state,
                 calendarRange: action.payload

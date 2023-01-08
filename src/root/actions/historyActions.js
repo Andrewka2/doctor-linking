@@ -24,7 +24,7 @@ function setOperationData(data) {
 }
 
 async function fetchOperationData(data){
-    await $api.post('/notifcation', data)
+    await $api.post('/set-request', data)
 }
 
 export function thunkOperationData(data){

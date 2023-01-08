@@ -1,8 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { thunkDeleteUser } from '../../root/actions/userActions'
 import { UserInfoFieldComponent } from '../UserInfoFIeld/UserInfoFieldComponent'
 import classes from './UserInfo.module.scss'
 
 export function UserInfoComponent({ choosedUser }) {
+    const dispatch = useDispatch()
+
+    function userDeleteHandler(){
+        dispatch(thunkDeleteUser(choosedUser.id))
+    }
     
     return (
         <div className={classes.userInfoContainer}>
@@ -12,7 +19,7 @@ export function UserInfoComponent({ choosedUser }) {
                     <div className={classes.headerBtn}>
                         <p>Редагувати</p>
                     </div>
-                    <div className={classes.headerBtn}>
+                    <div onClick={userDeleteHandler} className={classes.headerBtn}>
                         <p>Видалити</p>
                     </div>
                 </div>

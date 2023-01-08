@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import notificationSound from '../src/assets/registrationImages/notification.wav'
+import 'react-notifications/lib/notifications.css';
 import Panel from './Components/Panel/Panel';
 import CalendarItem from './View/CalendarItem/CalendarItem';
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
@@ -13,12 +15,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import UserPage from './View/UserPage/UserPage';
 import UsersManagmant from './View/UsersManagment/UsersManagement';
 import { getVerifyToken, onMessageListener } from './firebase';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 function App() {
   const [show, setShow ] = useState(false)
   const [notification, setNotification] = useState({title: '', body: ''});
   const [isTokenFound, setTokenFound] = useState(false);
-
+  let sound = new Audio(notificationSound)
+  function play(){
+    sound.play()
+  }
   let data = useSelector(state => state.user)
   let redirect = useNavigate()
   const dispatch = useDispatch()
@@ -32,8 +38,11 @@ function App() {
 
   onMessageListener().then(payload => {
     setShow(true);
+    NotificationManager.error(payload.notification.body, payload.notification.title, 5000, () => {
+      alert('callback');
+    });
     setNotification({title: payload.notification.title, body: payload.notification.body})
-    console.log(payload);
+    
   }).catch(err => console.log('failed: ', err));
 
   useEffect(() => {
@@ -56,8 +65,11 @@ function App() {
         data.isLoggedIn ? <Panel /> : null
       }
       {
-        show ? <p>{notification.body} {notification.title}</p> : null
+        show ? play() : null
       }
+      <div className="notificationContainer">
+        <NotificationContainer/>
+      </div>
       <Routes>
         <Route path="/doctorRequest" element={<DoctorRequest />} />
         <Route path="/user" element={<UserPage />} />

@@ -17,12 +17,13 @@ export const LOGIN = 'LOGIN'
 export const SIGN_UP = 'SIGN_UP'
 export const LOG_OUT =  'LOG_OUT'
 export const CHANGE_PASSWORD = 'CHANGE_PASSWORD'
+export const DELETE_USER = "DELETE_USER"
 
 // doctors
-
 export const DOCTOR_SIGN_UP = "DOCTOR_SIGN_UP" 
 
 // USERS
-
 export const GET_ALL = "GET_ALL"
 
+//requests
+export const GET_REQUESTS = "GET_REQUESTS" 

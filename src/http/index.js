@@ -16,7 +16,6 @@ export async function setNotificationKey(data){
     await $api.post('/notification', {key: data})
 }
 
-
 export default $api;
 
 //password update

@@ -1,4 +1,4 @@
-import { LOGIN, LOG_OUT, SIGN_UP, DOCTOR_SIGN_UP, CHANGE_PASSWORD } from "../constants";
+import { LOGIN, LOG_OUT, SIGN_UP, DOCTOR_SIGN_UP, CHANGE_PASSWORD, DELETE_USER } from "../constants";
 import $api, { API_URL } from '../../http/index';
 import axios from "axios";
 
@@ -12,7 +12,6 @@ export function changePasswordUpAction(payload){
 }
 
 async function fetchChangePassword(prevPass, newPass){
-    console.log(newPass)
     return await $api.post('/users/change-password', {prevPass: prevPass, newPass: newPass})
 }
 
@@ -20,7 +19,6 @@ export function thunhChangePassword(oldPassword, newPassword){
     return async (dispatch) => {
         try{
             let response = await fetchChangePassword(oldPassword, newPassword)
-            console.log(response)
         }catch(e){
             console.log(e)
         }
@@ -28,7 +26,7 @@ export function thunhChangePassword(oldPassword, newPassword){
 }
 
 //doctor registration
-
+// внести відповідні зміни після створення користувача на фронті 
 export function doctorSignUpAction(payload){
     return {
         type: DOCTOR_SIGN_UP,
@@ -115,7 +113,7 @@ export function logoutAction(){
 }
 
 export function fetchLogOut(){
-    return $api.post('/logout')
+    return $api.get('/logout')
 }
 
 export function thunkLogout(){
@@ -157,5 +155,30 @@ export async function verify(secret){
         }        
     }catch(e){
         console.log(e)
+    }
+}
+
+// delete
+
+
+export function deleteUserAction(id){
+    return {
+        type: DELETE_USER,
+        payload: id
+    }
+}
+
+export function fetchDeleteUser(id){
+    return $api.delete(`/users/delete-user/?id=${id}`)
+}
+
+export function thunkDeleteUser(id){
+    return async (dispatch) => {
+        try{
+           let result = await fetchDeleteUser(id)
+           dispatch(deleteUserAction(id))
+        }catch(error){
+            console.log(error)
+        }
     }
 }

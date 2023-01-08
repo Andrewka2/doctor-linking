@@ -10,7 +10,6 @@ export default function CalendarItem() {
     let [calendarNumberOfDate, setCalendarNumberOfDate] = useState([])
 
     useEffect(() => {
-        console.log(calendarRange)
         setCalendarNumberOfDate(calendarRange)
     }, [calendarRange])
     

@@ -11,7 +11,6 @@ function UserPage() {
     const dispatch = useDispatch()
     const user = useSelector((state) => state.user)
 
-
     function logOutHandler() {
         dispatch(thunkLogout())
     }

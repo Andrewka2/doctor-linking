@@ -1,4 +1,4 @@
-import { GET_ALL } from '../constants/index'
+import { GET_ALL, DELETE_USER } from '../constants/index'
 
 const initialState = {
     users: [
@@ -22,6 +22,14 @@ export default function allUsersReducer(state = initialState, action) {
                 ...state,
                 users: [
                     ...action.payload
+                ]
+            }
+        }
+        case DELETE_USER: {
+            return {
+                ...state,
+                users: [
+                    ...state.users.filter( elem => elem.id !== action.payload )
                 ]
             }
         }

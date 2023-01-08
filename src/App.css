@@ -23,6 +23,11 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.notificationContainer{
+  position: absolute;
+  top: 10%;
+  right: 5%;
+}
 
 .App-link {
   color: #61dafb;

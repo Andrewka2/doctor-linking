@@ -1,13 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from './Notification.module.scss'
 import { PageHeader } from "../../Components/PageHeader/PageHeader";
+import { useDispatch, useSelector } from "react-redux";
+import { thunkGetRequests } from "../../root/actions/requestsAction";
+import RequestComponent from "../../Components/RequestComponent/RequestComponent";
 
 export default function Notifications() {
+    let dispatch = useDispatch()
+    let requests = useSelector((state => state.requests.requests))
+    useEffect((() => {
+        dispatch(thunkGetRequests())
+    }), [])
     return (
         <div className={classes.Notifications}>
-            <PageHeader title={"Виклик"}/>
+            <PageHeader title={"Виклик"} />
             <div className={classes.notItemsContainer}>
-                <div className={classes.item}>
+                {
+                    requests.map((elem) => {
+                        return (
+                            <RequestComponent elem={elem}></RequestComponent>
+                        )
+                    })
+                }
+
+            </div>
+        </div>
+    )
+}
+
+/*
+ <div className={classes.item}>
                     <div className={classes.asa}>
                         <p>Шкала ASA: 3</p>
                     </div>
@@ -30,7 +52,4 @@ export default function Notifications() {
                     </div>
 
                 </div>
-            </div>
-        </div>
-    )
-}
+*/

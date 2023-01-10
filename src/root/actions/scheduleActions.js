@@ -1,3 +1,4 @@
+import $api from '../../http';
 import { CHANGE_STATUS, CHANGE_DATE } from '../constants';
 
 function changeStatus(calRow, i, selectedStatus) {
@@ -23,5 +24,16 @@ export function updateStatus(calRow, i, selectedStatus) {
 export function updateDate(newDate) {
     return function (dispatch) {
         dispatch(changeDate(newDate))
+    }
+}
+
+export function createCalendar(data) {
+    return async (dispatch) => {
+        try{
+            console.log(data);
+            const response = await $api.get('/createCalendar')
+        }catch(error){
+            console.log(error)
+        }
     }
 }

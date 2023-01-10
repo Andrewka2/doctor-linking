@@ -1,17 +1,21 @@
-.fileUpLoad{
-    margin-right: 30px;
-    label {
-        input{
-            display: none;
-            visibility: hidden;
-        }
-        p {
-            color: #7D7C7C;
-            background-color: #fff;
-            margin: 0px;
-            border-radius: 5px;
-            padding: 7px;
-            padding-bottom: 9px;
-        }
-    }
+// .fileUpLoad{
+//     margin-right: 30px;
+//     label {
+//         input{
+//             display: none;
+//             visibility: hidden;
+//         }
+//         p {
+//             color: #7D7C7C;
+//             background-color: #fff;
+//             margin: 0px;
+//             border-radius: 5px;
+//             padding: 7px;
+//             padding-bottom: 9px;
+//         }
+//     }
+// }
+
+.fileUpLoad {
+    display: none;
 }

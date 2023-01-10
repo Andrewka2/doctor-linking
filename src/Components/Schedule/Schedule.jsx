@@ -6,8 +6,14 @@ import arrow from '../../assets/arrow.png';
 import { useSelector } from 'react-redux'
 import ChooseFile from "../../Components/ChooseFileComponent/ChooseFile";
 import { useDispatch } from 'react-redux'
-import { updateStatus, updateDate } from "../../root/actions/scheduleActions";
+import { updateStatus, updateDate, createCalendar } from "../../root/actions/scheduleActions";
 import { useEffect } from "react";
+import editLogo from "../../assets/edit_pencil.png"
+import saveLogo from "../../assets/save_diskette.png"
+import eraseLogo from "../../assets/erase.png"
+import importImg from "../../assets/import.png"
+import deleteLogo from "../../assets/trashCanDisabled.png"
+import deleteLogoActive from "../../assets/trashCanActive.png"
 
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
@@ -36,7 +42,18 @@ export default function Schedule() {
     let [visibleData, setVisibleData] = useState(null)
     let [visibleRows, setVisibleRows] = useState(null)
     let [isModalOpen, setModalOpen] = useState(false)
-    let [rowClicked, setRowClicked] = useState(false)
+    let [isDataRecieved, setDataRecieved] = useState(false)
+    let [editOn, setEditOn] = useState(false)
+    let [deleteStatusOn, setDeleteStatus] = useState(false)
+
+    let updatedData = []
+
+    useEffect(() => {
+        if(!isDataRecieved){
+            dispatch(createCalendar)
+            setDataRecieved(!isDataRecieved)
+        }
+    }, [])
     
     useEffect(() => {
         console.log(scheduleData.chosenDate);
@@ -62,6 +79,10 @@ export default function Schedule() {
         }
     }
 
+    function deleteStatusHandler() {
+        setDeleteStatus(!deleteStatusOn)
+    }
+
     function visibleDataHandler(data){
         setVisibleData(data)
     }
@@ -79,6 +100,10 @@ export default function Schedule() {
         setModalOpen(!isModalOpen)
     }
 
+    function switchEditOn(){
+        setEditOn(!editOn)
+    }
+
     function saveStatus(data){
         console.log(data.status);
         let newStatus = {}
@@ -88,12 +113,17 @@ export default function Schedule() {
     }
 
     function selectStatus(selectedStatus) {
+        if (deleteStatusOn) {
+            statuses = statuses.filter(i => Object.keys(i)[0] !== selectedStatus)
+        }
         setSelectedStatus(selectedStatus)
     };
 
     function saveValue(calRow, i, selectedStatus){
-        console.log(visibleRows[calRow].row + ' ' + i + ' ' + selectedStatus);
-        dispatch(updateStatus(visibleRows[calRow].row, i, selectedStatus))
+        if (editOn){
+            console.log(visibleRows[calRow].row + ' ' + i + ' ' + selectedStatus);
+            dispatch(updateStatus(visibleRows[calRow].row, i, selectedStatus))
+        }
     }
 
     function prevRange() {
@@ -125,6 +155,12 @@ export default function Schedule() {
         }
         dispatch(updateDate(new Date(newDate)))
     }
+
+    function saveEdit() {
+        dispatch(createCalendar(updatedData))
+        setEditOn(!editOn)
+    }
+    console.log(deleteStatusOn);
 
     const {
         register,
@@ -160,8 +196,15 @@ export default function Schedule() {
                 <h1>{monthNames[new Date(scheduleData.chosenDate).getMonth()] + ' ' + new Date(scheduleData.chosenDate).getFullYear()}</h1>
             </div>
             <div className={classes.ScheduleHeader}>
+                <div className={classes.headerImportDiv}>
+                    <button className={classes.importBtn}>
+                        <label htmlFor="file-upload">
+                            <img className={classes.importImg} src={importImg} alt="importButton" />
+                        </label>
+                    </button>
+                    <ChooseFile calendarDataHandler={visibleDataHandler} handlerCalendarNumberOfDate={visibleRowsHandler}/>
+                </div>
                 <div className={classes.rangeDiv}>
-                    <h2 className={classes.headerHeading}>Період:</h2>
                     <div className={classes.rangeLeft}>
                         <button onClick={prevRange}><img src={arrow} alt="arrow" /></button>
                     </div>
@@ -177,51 +220,72 @@ export default function Schedule() {
                     </div>
                 </div>
                 <div className={classes.statusBody}>
-                    <h2 className={classes.headerHeading}>Статус:</h2>
-                    <div className={classes.statusList}>
-                        {statuses.map((item, i) => {
-                            return (
-                                <div className={selectedStatus === Object.keys(item)[0] ? [classes.statusDiv, classes.selectedStatusDiv].join(' ') : classes.statusDiv}
-                                title={Object.values(item)[0]}
-                                onClick={()=>{selectStatus(Object.keys(item)[0])}}>
-                                    <p className={classes.status}>{Object.keys(item)[0]}</p>
-                                </div>
-                            )
-                            })
-                        }
-                        <div onClick={switchModal} className={classes.defaultStatusDiv} title="Додати новий статус">
-                            <p className={classes.defaultStatus}>+</p>
-                        </div>
+                    {!editOn ?
+                    <div className={classes.editDiv}>
+                        <button className={classes.editStatusBtn} onClick={switchEditOn}>
+                            <img className={classes.editLogo} src={editLogo} alt="editButton" />
+                        </button>
                     </div>
-                    {isModalOpen ?
-                    <div className={classes.modalDiv}>
-                        <div className={classes.modalBackground}
-                            onClick={switchModal}
+                    :
+                    <div className={classes.saveDiv}>
+                        <button className={classes.saveStatusBtn} onClick={saveEdit}>
+                            <img className={classes.saveLogo} src={saveLogo} alt="saveButton" />
+                        </button>
+                        <button className={deleteStatusOn ? [classes.deleteStatusBtn, classes.btnActive].join(' ') : classes.deleteStatusBtn} 
+                                onClick={deleteStatusHandler}
+                        >
+                            {deleteStatusOn ?
+                            <img className={classes.deleteLogo} src={deleteLogoActive} alt="deleteStatusButton" />
+                            :
+                            <img className={classes.deleteLogo} src={deleteLogo} alt="deleteStatusButton" />
+                            }
+                        </button>
+                        <div className={classes.statusList}>
+                            {statuses.map((item, i) => {
+                                return (
+                                    <div className={selectedStatus === Object.keys(item)[0] ? [classes.statusDiv, classes.selectedStatusDiv].join(' ') : classes.statusDiv}
+                                    title={Object.values(item)[0]}
+                                    onClick={()=>{selectStatus(Object.keys(item)[0])}}>
+                                        <p className={classes.status}>{Object.keys(item)[0]}</p>
+                                    </div>
+                                )
+                                })
+                            }
+                            <div onClick={()=>{selectStatus(null)}}
+                                className={selectedStatus === null ? [classes.statusDiv, classes.selectedStatusDiv].join(' ') : classes.statusDiv}
+                                title="видалити статус"
                             >
+                                <p className={classes.defaultStatus}><img className={classes.eraseLogo} src={eraseLogo} alt="eraseStatus" /></p>
+                            </div>
+                            <div onClick={switchModal} className={classes.defaultStatusDiv} title="Додати новий статус">
+                                <p className={classes.defaultStatus}>+</p>
+                            </div>
                         </div>
-                        <div className={classes.statusAddForm}>
-                            <form onSubmit={handleSubmit(data => saveStatus(data))}>
-                                <div className={classes.fieldCont}>
-                                    <div className={classes.fieldItem}>
-                                        <input placeholder="Абревіатура статусу" type="text" {...register('status')} />
+                        {isModalOpen ?
+                        <div className={classes.modalDiv}>
+                            <div className={classes.modalBackground}
+                                onClick={switchModal}
+                                >
+                            </div>
+                            <div className={classes.statusAddForm}>
+                                <form onSubmit={handleSubmit(data => saveStatus(data))}>
+                                    <div className={classes.fieldCont}>
+                                        <div className={classes.fieldItem}>
+                                            <input placeholder="Абревіатура статусу" type="text" {...register('status')} />
+                                        </div>
+                                        <div className={classes.code}>
+                                            <input placeholder="Опис статусу" type="text" {...register('fullStatusDesc')} />
+                                        </div>
                                     </div>
-                                    <div className={classes.code}>
-                                        <input placeholder="Опис статусу" type="text" {...register('fullStatusDesc')} />
+                                    <div className={classes.send}>
+                                        <input type="submit" value={'Зберегти'}/>
                                     </div>
-                                </div>
-                                <div className={classes.send}>
-                                    <input type="submit" value={'Зберегти'}/>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
+                        : null}
                     </div>
-                    : null}
-                </div>
-                <div className={classes.headerImportDiv}>
-                    <h2 className={classes.headerHeading}>Імпортувати файл:</h2>
-                    <div className={classes.headerChooseFile}>
-                        <ChooseFile calendarDataHandler={visibleDataHandler} handlerCalendarNumberOfDate={visibleRowsHandler}/>
-                    </div>
+                    }
                 </div>
             </div>
             <div className={classes.scheduleCalendar}>

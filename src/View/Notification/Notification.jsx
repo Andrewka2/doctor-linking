@@ -10,7 +10,7 @@ export default function Notifications() {
     let requests = useSelector((state => state.requests.requests))
     useEffect((() => {
         dispatch(thunkGetRequests())
-    }), [])
+    }), [dispatch])
     return (
         <div className={classes.Notifications}>
             <PageHeader title={"Виклик"} />
@@ -18,11 +18,10 @@ export default function Notifications() {
                 {
                     requests.map((elem) => {
                         return (
-                            <RequestComponent elem={elem}></RequestComponent>
+                            <RequestComponent elem={elem}/>
                         )
                     })
                 }
-
             </div>
         </div>
     )

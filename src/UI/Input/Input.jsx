@@ -1,7 +1,8 @@
 import React from 'react'
 import classes from './Input.module.scss'
 
-export function Input({pattern, register, label, itemType, type, placeholder}) {
+export function Input({pattern, register, label, itemType, type, placeholder, inputType}) {
+  console.log(label)
   let cls = [classes.nameImg]
 
   if(itemType){
@@ -13,7 +14,7 @@ export function Input({pattern, register, label, itemType, type, placeholder}) {
         <div className={cls.join(' ')}>
           <img src={require(`../../assets/registrationImages/${itemType}.png`)} alt="login" />
         </div>
-        <input {...register(label, {required: true, pattern: pattern})} className={classes.Input} placeholder={placeholder} type={'text'}></input>
+        <input {...register(label, {required: true, pattern: pattern})} className={classes.Input} placeholder={placeholder} type={inputType ? inputType : 'text'}></input>
       </div>
     )
   }

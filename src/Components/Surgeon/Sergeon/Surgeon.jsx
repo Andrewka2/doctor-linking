@@ -19,7 +19,7 @@ function Surgeon({user}) {
     let surgeonOperativeDataHandler = useCallback((data)=>{
         setSurgeonOperativeData(data)
         dispatch(thunkOperationData({requestData: {...data}, petitionerId: user.id, petitioner: `${user.name} ${user.surname}`,
-        position: user.position, personalType: doctor, dateTime: Date.now()}))
+        position: user.position, personalType: doctor.value, dateTime: Date.now()}))
     }, [surgeonOperativeData, doctor])
 
     function handleDoctor(selectedOption) {
@@ -37,7 +37,7 @@ function Surgeon({user}) {
                 />
             </div>
             {
-                doctor === 'Медсестра' ? <SurgeonOperative surgeonOperativeDataHandler={surgeonOperativeDataHandler}/> : <SurgAnest/>
+                doctor === 'Медсестра' ? <SurgeonOperative surgeonOperativeDataHandler={surgeonOperativeDataHandler}/> : <SurgAnest surgeonOperativeDataHandler={surgeonOperativeDataHandler}/>
             }
         </div>
     )

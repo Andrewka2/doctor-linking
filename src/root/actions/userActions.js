@@ -1,6 +1,7 @@
-import { LOGIN, LOG_OUT, SIGN_UP, DOCTOR_SIGN_UP, CHANGE_PASSWORD, DELETE_USER } from "../constants";
+import { LOGIN, LOG_OUT, SIGN_UP, DOCTOR_SIGN_UP, CHANGE_PASSWORD, DELETE_USER, EDIT_USER } from "../constants";
 import $api, { API_URL } from '../../http/index';
 import axios from "axios";
+import { updateOneUserAction } from "./allUsersAction";
 
 // change password
 
@@ -18,7 +19,7 @@ async function fetchChangePassword(prevPass, newPass){
 export function thunhChangePassword(oldPassword, newPassword){
     return async (dispatch) => {
         try{
-            let response = await fetchChangePassword(oldPassword, newPassword)
+            await fetchChangePassword(oldPassword, newPassword)
         }catch(e){
             console.log(e)
         }
@@ -95,11 +96,8 @@ export function thunkLogin(payload){
             let response = await fetchLogin(payload)
             localStorage.setItem('token', response.data.tokens.accessToken)
             dispatch(loginAction(response.data.data))
-
-           // await test()
         }catch(error){
             console.log(error)
-            //dispatch()
         }
     }
 }
@@ -129,7 +127,6 @@ export function thunkLogout(){
 }
 
 //checkauth
-
 export async function checkAuth(){
     try{
         const response = await axios.get(`${API_URL}/refresh`, {withCredentials: true})
@@ -159,8 +156,6 @@ export async function verify(secret){
 }
 
 // delete
-
-
 export function deleteUserAction(id){
     return {
         type: DELETE_USER,
@@ -175,10 +170,37 @@ export function fetchDeleteUser(id){
 export function thunkDeleteUser(id){
     return async (dispatch) => {
         try{
-           let result = await fetchDeleteUser(id)
+           await fetchDeleteUser(id)
            dispatch(deleteUserAction(id))
         }catch(error){
             console.log(error)
         }
     }
 }
+
+export function updateUserAction(userData){
+    return {
+        type: EDIT_USER,
+        payload: userData
+    }
+}
+
+export function fetchUpdateUser(userData){
+    return $api.put(`/users/update`, {userData})
+}
+
+export function thunkUpdateUser(userData, id){
+    return async (dispatch) => {
+        try{
+           let result = await fetchUpdateUser(userData)
+           if(userData.id === id){
+                dispatch(updateUserAction(userData))
+           } 
+           dispatch(updateOneUserAction(result.data.data))
+        }catch(error){
+            console.log(error)
+        }
+    }
+}
+//update user
+

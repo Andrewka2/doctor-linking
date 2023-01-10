@@ -10,7 +10,6 @@ function UserPage() {
     let [openForm, setOpenForm] = useState(false)
     const dispatch = useDispatch()
     const user = useSelector((state) => state.user)
-
     function logOutHandler() {
         dispatch(thunkLogout())
     }
@@ -29,6 +28,14 @@ function UserPage() {
                     </div>
                     <div className={classes.userData}>
                         <p>{user.name}</p>
+                    </div>
+                </div>
+                <div className={classes.fieldCont}>
+                    <div className={classes.fieldName}>
+                        <p>Прізвище:</p>
+                    </div>
+                    <div className={classes.userData}>
+                        <p>{user.surname}</p>
                     </div>
                 </div>
                 <div className={classes.fieldCont}>
@@ -55,25 +62,23 @@ function UserPage() {
                         <p>{user.position}</p>
                     </div>
                 </div>
-                <div className={classes.fieldCont}>
-                    <div className={classes.fieldName}>
-                        <p>Прізвище:</p>
-                    </div>
-                    <div className={classes.userData}>
-                        <p>{user.surname}</p>
-                    </div>
-                </div>
+                
+            </div>
+            <div className={classes.changePassCont}>
+                {
+                    user && user.isTemporary === false ? null : <p className={classes.temporaryPassword}>Ви повинні змінити тимчасовий пароль!!!</p>
+                }
                 <div className={classes.changePassword}>
-                    <button onClick={openChangePasswordForm}>change password</button>
+                    <button onClick={openChangePasswordForm}>Змінити пароль</button>
                 </div>
                 {
-                    openForm ? <div>
-                        <ChangePasswordForm id={user.id}/>
-                    </div> : null
+                openForm ? <div className={classes.changePassFieldsCont}>
+                    <ChangePasswordForm id={user.id} />
+                </div> : null
                 }
-                <div>
-                    <button onClick={logOutHandler}>Log out</button>
-                </div>
+            </div>
+            <div className={classes.logOutCont}>
+                <button onClick={logOutHandler}>вийти з акаунту</button>
             </div>
         </div>
     )

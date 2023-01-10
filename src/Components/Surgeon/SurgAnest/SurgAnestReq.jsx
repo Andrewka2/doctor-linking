@@ -2,29 +2,22 @@ import React, { useState } from "react";
 import classes from './SurgAnest.module.scss';
 import { useForm } from 'react-hook-form';
 
-export default function SurgAnest() {
-
-    let [doctor, setDoctor] = useState(null)
-    let [dangerLvl, setDanger] = useState(null)
-
-    function handleDoctor(selectedOption) {
-        setDoctor(selectedOption)
-    };
-
-    function changeDangerLevel(value) {
-        setDanger(value)
-    }
-
+export default function SurgAnest({surgeonOperativeDataHandler}) {
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
 
+    function handleSubmitData(data, e){
+        e.preventDefault();
+        surgeonOperativeDataHandler(data)
+    }
+
     return (
         <div className={classes.Nurse}>
             <div className={classes.patientCont}>
-                <form onSubmit={handleSubmit(data => console.log(data))}>
+                <form onSubmit={handleSubmit((data, e) => handleSubmitData(data,e))}>
                     <div className={classes.content}>
                         <div className={classes.itemStartData}>
                             <div className={classes.itemStartDataText}>

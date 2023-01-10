@@ -1,6 +1,5 @@
-import { GET_ALL } from "../constants";
-import $api, { API_URL } from '../../http/index';
-import axios from "axios";
+import { GET_ALL, UPDATE_ONE_USER } from "../constants";
+import $api from '../../http/index';
 
 //get users
 
@@ -24,5 +23,13 @@ export function thunkGetAllUsers(){
         }catch(e){
             console.log(e)
         }
+    }
+}
+
+//update user 
+export function updateOneUserAction(payload){
+    return {
+        type: UPDATE_ONE_USER,
+        payload
     }
 }

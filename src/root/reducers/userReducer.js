@@ -1,4 +1,4 @@
-import {LOGIN, SIGN_UP, LOG_OUT} from '../constants/index'
+import {LOGIN, SIGN_UP, LOG_OUT, EDIT_USER} from '../constants/index'
 
 const initialState = {
     id: 0,
@@ -48,6 +48,12 @@ export default function userReducer(state = initialState, action){
                 email: '',
                 name: '',
                 isLoggedIn: false
+            }
+        }
+        case EDIT_USER: {
+            return {
+                ...state,
+                ...action.payload
             }
         }
         default: {

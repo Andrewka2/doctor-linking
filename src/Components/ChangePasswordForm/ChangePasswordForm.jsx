@@ -19,9 +19,9 @@ function ChangePasswordForm(id) {
 
     return (
         <form className={classes.loginForm} onSubmit={handleSubmit((data) => changePasswordHandler(data))}>
-            <div>
+            <div className={classes.passField}>
                 <Input pattern={/^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,16})/}
-                    register={register} label={'oldPassword'} itemType={'name'} type={'registration'} placeholder={'Old Password'} />
+                    register={register} label={'oldPassword'} itemType={'name'} type={'registration'} placeholder={'Попередній пароль'} inputType={'password'}/>
                 {
                     errors.oldPassword?.type === 'required' && <p className={classes.errorMessage}>Password is required</p>
                 }
@@ -29,9 +29,9 @@ function ChangePasswordForm(id) {
                     errors.oldPassword?.type === 'pattern' && <p className={classes.errorMessage}>Wrond password format</p>
                 }
             </div>
-            <div>
+            <div className={classes.passField}>
                 <Input pattern={/^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,16})/}
-                    register={register} label={'newPassword'} itemType={'name'} type={'registration'} placeholder={'New Password'} />
+                    register={register} label={'newPassword'} itemType={'name'} type={'registration'} placeholder={'Новий пароль'} inputType={'password'} />
                 {
                     errors.newPassword?.type === 'required' && <p className={classes.errorMessage}>Password is required</p>
                 }
@@ -40,7 +40,7 @@ function ChangePasswordForm(id) {
                 }
             </div>
             <div className={classes.btnSubmit}>
-                <input type="submit" />
+                <input value={'Оновити'} type="submit" />
             </div>
         </form>
     )

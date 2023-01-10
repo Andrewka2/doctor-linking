@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react"
 import classes from './HistoryItem.module.scss'
-import Select from 'react-select'
 import { useSelector, useDispatch } from 'react-redux'
 import { addConsultationData, addOperationsData } from "../../root/actions/historyActions"
 import { historyConsultationData, historyOperationsData } from "../../config/history"
-
 
 const historyType = [
     { value: 0, label: 'Консультації', fields: ['Дата/Час', 'Лікар', 'Посада', 'Діагноз'] },
@@ -12,9 +10,9 @@ const historyType = [
 ];
 
 export default function HistoryItem() {
+    const dispatch = useDispatch()
     const consultationData = useSelector((state) => state.history.consultationList)
     const operationsData = useSelector((state) => state.history.operationsList)
-    const dispatch = useDispatch()
     let [consultationChoosed, switchConsultation] = useState(true)
     let [organisationChoosed, switchOrganisation] = useState(false)
     let [choosedCategoryId, switchCategoryId] = useState(0)
@@ -33,7 +31,7 @@ export default function HistoryItem() {
         if(value === 0){
             switchConsultation(true)
             switchOrganisation(false)
-        }else{
+        } else {
             switchOrganisation(true)
             switchConsultation(false)
         }
@@ -69,7 +67,7 @@ export default function HistoryItem() {
             {consultationList.length > 0 && choosedCategoryId === 0 ? consultationList.map((elem, i)=> {
                     let date = new Date(elem.dateTime)
                     return (
-                        <div className={classes.categoryRow}>
+                        <div key={`history-item-${i}`} className={classes.categoryRow}>
                             <div className={classes.consultCategoryValue}>
                                 <p className={classes.consultValue}>{`${date.toLocaleDateString()}/${date.toLocaleTimeString()}`}</p>
                             </div>

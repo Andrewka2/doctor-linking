@@ -1,0 +1,19 @@
+.passField{
+    margin-bottom: 20px;
+}
+.btnSubmit{
+    input {
+        background-color: #fff;
+        font-size: 16px;
+        padding: 5px;
+        border: 0.5px solid #000;
+        border-radius: 5px;
+    }
+}
+.errorMessage{
+    color: red;
+    font-size: 12px;
+    padding-top: 5px;
+    margin: 0px;
+    margin-left: 10px;
+}

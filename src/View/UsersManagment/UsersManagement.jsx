@@ -1,34 +1,38 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import classes from './UserManagement.module.scss'
 import { PageHeader } from '../../Components/PageHeader/PageHeader'
 import addUser from '../../assets/add-user.png'
 import update from '../../assets/update.png'
 import CreateUserFrom from '../../Components/CreateUserForm/CreateUserFrom'
-import AddFormItem from '../../Components/AddFormItem/AddFormItem'
 import { useSelector } from 'react-redux'
 import { AllUsersComponent } from '../../Components/AllUsersComponent/AllUsersComponent'
 import { UserInfoComponent } from '../../Components/UserInfoComponent/UserInfoComponent'
 import { useState } from 'react'
 import { useCallback } from 'react'
 
-
 function UsersManagmant() {
-
   let users = useSelector(state => state.users)
-
+  let userId = useSelector(state => state.user.id)
+  let [choosedUserId, setChoosedUserId] = useState(null)
   let [choosedUser, setChoosedUser ] = useState(null)
   let [isAdd, setIsAdd] = useState(false)
 
   const isAddHandler = useCallback(()=>{
     setChoosedUser(null)
     setIsAdd(!isAdd)
-  }, [isAdd, choosedUser])
+  }, [isAdd])
+
+  useEffect(()=>{
+    let user = users.users.find((elem)=> elem.id === choosedUserId)
+    setChoosedUser(user) 
+  }, [users.users, choosedUserId])
 
   const chooseUserHandler = useCallback((id)=>{
+    setChoosedUserId(id)
     let user = users.users.find((elem)=> elem.id === id)
     setChoosedUser(user)
     setIsAdd(false)
-  }, [isAdd, choosedUser])
+  }, [users])
 
   return (
     <div className={classes.UsersManagement}>
@@ -59,18 +63,11 @@ function UsersManagmant() {
           <div className={classes.elems}>
             <AllUsersComponent isAddHandler={isAddHandler} chooseUserHandler={chooseUserHandler} users={users.users}/>
             {
-              choosedUser ? <UserInfoComponent choosedUser={choosedUser}/> : null 
+              choosedUser ? <UserInfoComponent choosedUser={choosedUser} id={userId}/> : null 
             }
             {
               isAdd ? <CreateUserFrom/> : null 
             }
-            
-            {
-              /*
-                <CreateUserFrom/>  
-              */
-            }
-
           </div>
         </div>
       </div>

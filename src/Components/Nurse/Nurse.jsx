@@ -1,18 +1,14 @@
 import React, { useState } from "react";
+
 import classes from './Nurse.module.scss';
 import { useForm } from 'react-hook-form';
 
-export default function Nurse() {
-
-    let [doctor, setDoctor] = useState(null)
+export default function Nurse({surgeonOperativeDataHandler}) {
     let [dangerLvl, setDanger] = useState(null)
-
-    function handleDoctor(selectedOption) {
-        setDoctor(selectedOption)
-    };
-
-    function changeDangerLevel(value){
-        setDanger(value)
+    function handleSubmitData(data, e){
+        e.preventDefault()
+        data.dangerLevel = dangerLvl
+        surgeonOperativeDataHandler(data)
     }
 
     const {
@@ -24,14 +20,14 @@ export default function Nurse() {
     return (
         <div className={classes.Nurse}>
             <div className={classes.patientCont}>
-                <form onSubmit={handleSubmit(data => console.log(data))}>
+                <form onSubmit={handleSubmit((data,e) => handleSubmitData(data,e))}>
                     <div className={classes.content}>
                         <div className={classes.itemStartData}>
                             <div className={classes.itemStartDataText}>
                                 <p>Палата:</p>
                             </div>
                             <div className={classes.itemStartDataInput}>
-                                <input placeholder="" type="text" {...register('age')} />
+                                <input placeholder="" type="text" {...register('room')} />
                             </div>
                         </div>
                         <div className={classes.itemStartData}>
@@ -39,7 +35,7 @@ export default function Nurse() {
                                 <p>Паціент:</p>
                             </div>
                             <div className={classes.itemStartDataInput}>
-                                <input placeholder="" type="text" {...register('wage')} />
+                                <input placeholder="" type="text" {...register('patient')} />
                             </div>
                         </div>
                         <div className={[classes.itemStartData].join(' ')}>
@@ -47,7 +43,7 @@ export default function Nurse() {
                                 <p>Час:</p>
                             </div>
                             <div className={classes.itemStartDataInput}>
-                                <input placeholder="" type="text" {...register('wage')} />
+                                <input placeholder="" type="text" {...register('time')} />
                             </div>
                         </div>
                     </div>
